@@ -1,0 +1,19 @@
+{
+    "Objects":
+    [
+        {
+            "name": "None",       
+            "ObjNo": 0,
+            "Uitype": "NONE",
+            "Texture": false,
+            "Path": false
+        },
+        {
+            "name": "Triangle",
+            "ObjNo":1,
+            "Uitype": "TwoD",
+            "Texture": true,
+            "Path": false
+        }
+    ]
+}
