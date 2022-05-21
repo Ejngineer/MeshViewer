@@ -30,6 +30,7 @@ public:
 
 	void setMat4f(const std::string& name, glm::mat4 input);
 	void setNum1i(const std::string& name, int v0);
+	void setvec3f(const std::string name, glm::vec3 input);
 	void Use() { glUseProgram(ID); };
 
 

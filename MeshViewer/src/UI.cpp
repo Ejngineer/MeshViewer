@@ -26,7 +26,6 @@ UI::~UI()
 
 void UI::Render()
 {
-	static int selected = 0;
 	static bool opened;
 
 	ImGui_ImplOpenGL3_NewFrame();
@@ -54,31 +53,35 @@ void UI::Render()
 		Initialize = false;
 	}
 
-	
-
 	ImGui::Begin("Mesh Viewer", &opened, flags);
-	ImGui::Combo("Objects", &selected, ObjNames.data(), (int)ObjNames.size());
+	ImGui::Combo("Objects", &currSelected, ObjNames.data(), (int)ObjNames.size());
 	
-	switch (selected)
+	if (prevSelected != currSelected)
 	{
-	case 0:
-		Rnd.CreateObject(Renderer::Shape::NONE);
-		break;
-	case 1:
-		Rnd.CreateObject(Renderer::Shape::TRIANGLE);
-		AddElement(UIType::TwoD);
-		break;
-	
+		prevSelected = currSelected;
+		switch (currSelected)
+		{
+		case 0:
+			Rnd.CreateObject(Renderer::Shape::NONE);
+			setUI(Renderer::Shape::NONE);
+			break;
+		case 1:
+			Rnd.CreateObject(Renderer::Shape::TRIANGLE);
+			setUI(Renderer::Shape::TRIANGLE);
+			break;
+		}
 	}
+
+	DrawElement();
 
 	ImGui::End();
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
 
-void UI::AddElement(const UIType& type)
+void UI::AddLight(LightType type)
 {
-	UIelements.push_back(type);
+	Lights.push_back(type);
 }
 
 void UI::ParseJSON(Json::Value& ObjList)
@@ -98,13 +101,20 @@ void UI::ParseJSON(Json::Value& ObjList)
 	}
 }
 
-void UI::CreateElement(const UIType& type) const
+void UI::setUI(Renderer::Shape shape)
 {
-	if (type == UIType::TwoD)
+	ObjUiType = ObjectList[shape]["Uitype"].asString();
+	ObjisTexture = ObjectList[shape]["Texture"].asBool();
+}
+
+void UI::DrawElement()
+{
+	if (ObjUiType == "TwoD")
 	{
-		//ImGui::Begin("2D Object");
-		//ImGui::ColorEdit4("Color", );
-		//ImGui::Text("Transform");
-		//ImGui::SliderFloat3("Translation", Rnd.GetObjectTranslation(), 0.0f, 1.0f);
+		ImGui::ColorEdit3("Color", Rnd.getColor());
+		ImGui::Text("Transform");
+		ImGui::SliderFloat2("Translation", Rnd.getTransform(), -5.0f, 5.0f);
+		ImGui::SliderFloat2("Scale", Rnd.getScale(), 0.0f, 10.0f);
+		ImGui::SliderFloat3("Rotation", Rnd.GetRotation(), 0.0f, 360.0f);
 	}
 }

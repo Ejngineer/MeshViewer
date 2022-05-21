@@ -58,6 +58,18 @@ public:
 	/*Setup Framebuffer to render texture to*/
 	void SetupFBO(float width, float height);
 
+	/*Change shader color uniform value*/
+	float* getColor() { return glm::value_ptr(Color); }
+
+	/*Change object coordinates*/
+	float* getTransform()  { return glm::value_ptr(Trans); }
+
+	/*Change object scale*/
+	float* getScale() { return glm::value_ptr(Scale); }
+
+	/*Change object rotation*/
+	void Rotate();
+	float* GetRotation() { return glm::value_ptr(RotAxis); }
 private:
 	/*framebuffer texture is applie to this quad*/
 	std::vector<float> frameQuad = 
@@ -98,7 +110,13 @@ private:
 	
 	/*geometr/model data members*/
 	Object* Obj;
+
+	/*shader uniforms*/
 	Shader shader;
+	glm::vec3 Color = glm::vec3(1.0f);
+	glm::vec3 Trans = glm::vec3(0.0f);
+	glm::vec3 Scale = glm::vec3(1.0f);
+	glm::vec3 RotAxis = glm::vec3(0.0f);
 };
 
 #endif

@@ -6,7 +6,6 @@ Renderer::Renderer()
 	:
 	Obj(nullptr)
 {
-	projection = glm::perspective(glm::radians(FOV), frameWidth / frameHeight, 0.1f, 100.0f);
 	Init();
 };
 
@@ -63,18 +62,21 @@ void Renderer::DrawObject()
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, FBO);
 	{
-		glClearColor(0.0f, 0.5f, 0.0f, 1.0f);
+		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
 		if (Obj != nullptr)
 		{
 			shader.Use();
-			model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
-			//model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 0.0f, 0.0f));
-			model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+			model = glm::mat4(1.0f);
+			model = glm::translate(model, Trans);
+			Rotate();
+			model = glm::scale(model, Scale);
 			shader.setMat4f("model", model);
 			shader.setMat4f("view", view);
+			projection = glm::perspective(glm::radians(FOV), frameWidth / frameHeight, 0.1f, 100.0f);
+			//glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, 0.1f, 100.0f);
 			shader.setMat4f("projection", projection);
-
+			shader.setvec3f("color", Color);
 			Obj->Draw();
 		}
 	}
@@ -102,6 +104,8 @@ void Renderer::Enable()
 
 void Renderer::SetupFBO(float width, float height)
 {
+	frameWidth = width;
+	frameHeight = height;
 	glGenFramebuffers(1, &FBO);
 	glBindFramebuffer(GL_FRAMEBUFFER, FBO);
 
@@ -125,4 +129,20 @@ void Renderer::SetupFBO(float width, float height)
 
 	glBindTexture(GL_TEXTURE_2D, 0);
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+}
+
+void Renderer::Rotate()
+{
+	if (RotAxis.x > 0.0f)
+	{
+		model = glm::rotate(model, glm::radians(RotAxis.x), glm::vec3(1.0f, 0.0f, 0.0f));
+	}
+	if (RotAxis.y > 0.0f)
+	{
+		model = glm::rotate(model, glm::radians(RotAxis.y), glm::vec3(0.0f, 1.0f, 0.0f));
+	}
+	if (RotAxis.z > 0.0f)
+	{
+		model = glm::rotate(model, glm::radians(RotAxis.z), glm::vec3(0.0f, 0.0f, 1.0f));
+	}
 }
