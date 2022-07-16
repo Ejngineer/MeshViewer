@@ -15,24 +15,11 @@
 
 class UI
 {
-public:
-	enum class LightType
-	{
-		P_LIGHT = 0,
-		P_LIGHT_ATT = 1,
-		DIR_LIGHT = 2,
-		F_LIGHT = 3
-	};
-
 private:
-	/*vector to store number of lights
-	and their type*/
-	std::vector<LightType> Lights;
-
 	/*vector to store name of out objects
 	for ui list*/
 	std::vector<const char*> ObjNames;
-	std::string ObjUiType;
+	std::string ObjUiType = "NONE";
 	bool ObjisTexture = false;
 	bool ObjisPath = false;
 	Json::Value ObjectList;
@@ -54,7 +41,6 @@ public:
 	~UI();
 	void Render();
 	void DrawElement();
-	void AddLight(LightType type);
 	void ParseJSON(Json::Value& ObjList);
 	void setUI(Renderer::Shape shape);
 };

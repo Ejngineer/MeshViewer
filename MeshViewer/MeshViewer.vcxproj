@@ -148,6 +148,8 @@
     <None Include="shaders\defaultVert.glsl" />
     <None Include="shaders\frameFrag.glsl" />
     <None Include="shaders\frameVert.glsl" />
+    <None Include="shaders\PhongFrag.glsl" />
+    <None Include="shaders\PhongVert.glsl" />
     <None Include="vendor\glfw\lib-vc2022\glfw3.dll" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +157,8 @@
     <ClCompile Include="src\AppMain.cpp" />
     <ClCompile Include="src\IndexBuffer.cpp" />
     <ClCompile Include="src\Object.cpp" />
+    <ClCompile Include="src\Objects\Cube.cpp" />
+    <ClCompile Include="src\Objects\PointLight.cpp" />
     <ClCompile Include="src\Objects\Triangle.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
     <ClCompile Include="src\Shader.cpp" />
@@ -177,6 +181,9 @@
     <ClInclude Include="src\Application.h" />
     <ClInclude Include="src\IndexBuffer.h" />
     <ClInclude Include="src\Object.h" />
+    <ClInclude Include="src\Light.h" />
+    <ClInclude Include="src\Objects\Cube.h" />
+    <ClInclude Include="src\Objects\PointLight.h" />
     <ClInclude Include="src\Objects\Triangle.h" />
     <ClInclude Include="src\Renderer.h" />
     <ClInclude Include="src\Shader.h" />

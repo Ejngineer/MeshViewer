@@ -33,24 +33,23 @@ void UI::Render()
 	ImGui::NewFrame();
 
 	wndRes = Wnd.getResolution();
-	if (initRes.x != wndRes.x || initRes.y != wndRes.y)
-	{
-		initRes.x = (float)wndRes.x;
-		initRes.y = (float)wndRes.y;
-
-		ImGui::SetNextWindowPos(ImVec2(initRes.x - 400,
-			0));
-		ImGui::SetNextWindowSize(ImVec2(400, initRes.y));
-
-		Rnd.SetViewPort(wndRes.x - 400, wndRes.y);
-		Rnd.SetupFBO(initRes.x - 400, initRes.y);
-	}
-	else if(Initialize)
+	if(Initialize)
 	{
 		ImGui::SetNextWindowPos(ImVec2(initRes.x - 400,
 			0));
 		ImGui::SetNextWindowSize(ImVec2(400, initRes.y));
 		Initialize = false;
+	}
+	else if (initRes.x != wndRes.x || initRes.y != wndRes.y)
+	{
+		initRes.x = (float)wndRes.x;
+		initRes.y = (float)wndRes.y;
+
+		ImGui::SetNextWindowPos(ImVec2(initRes.x - 400,0));
+		ImGui::SetNextWindowSize(ImVec2(400, initRes.y));
+
+		Rnd.SetViewPort(wndRes.x - 400, wndRes.y);
+		Rnd.SetupFBO(initRes.x - 400, initRes.y);
 	}
 
 	ImGui::Begin("Mesh Viewer", &opened, flags);
@@ -69,19 +68,17 @@ void UI::Render()
 			Rnd.CreateObject(Renderer::Shape::TRIANGLE);
 			setUI(Renderer::Shape::TRIANGLE);
 			break;
+		case 2:
+			Rnd.CreateObject(Renderer::Shape::CUBE);
+			setUI(Renderer::Shape::CUBE);
+			break;
 		}
 	}
-
 	DrawElement();
 
 	ImGui::End();
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-}
-
-void UI::AddLight(LightType type)
-{
-	Lights.push_back(type);
 }
 
 void UI::ParseJSON(Json::Value& ObjList)
@@ -109,6 +106,26 @@ void UI::setUI(Renderer::Shape shape)
 
 void UI::DrawElement()
 {
+	if (ObjUiType != "NONE")
+	{
+		if (ImGui::Button("Render Shader"))
+		{
+			Rnd.ToggleModes(0);
+		}
+		ImGui::SameLine();
+		if (ImGui::Button("Render Lines"))
+		{
+			Rnd.ToggleModes(1);
+		}
+		ImGui::SameLine();
+		if (ImGui::Button("Render Points"))
+		{
+			Rnd.ToggleModes(2);
+		}
+
+		
+	}
+
 	if (ObjUiType == "TwoD")
 	{
 		ImGui::ColorEdit3("Color", Rnd.getColor());
@@ -116,5 +133,41 @@ void UI::DrawElement()
 		ImGui::SliderFloat2("Translation", Rnd.getTransform(), -5.0f, 5.0f);
 		ImGui::SliderFloat2("Scale", Rnd.getScale(), 0.0f, 10.0f);
 		ImGui::SliderFloat3("Rotation", Rnd.GetRotation(), 0.0f, 360.0f);
+		ImGui::SliderFloat("Ambient Strength", Rnd.getAmbient(), 0.0f, 1.0f);
+		ImGui::SliderFloat("Specular Strenth", Rnd.getSpecular(), 2.0f, 1024.0f);
+	}
+
+	if (ObjUiType == "ThreeD")
+	{
+		ImGui::ColorEdit3("Color", Rnd.getColor());
+		ImGui::Text("Transform");
+		ImGui::SliderFloat2("Translation", Rnd.getTransform(), -5.0f, 5.0f);
+		ImGui::SliderFloat3("Scale", Rnd.getScale(), 0.0f, 10.0f);
+		ImGui::SliderFloat3("Rotation", Rnd.GetRotation(), 0.0f, 360.0f);
+		ImGui::SliderFloat("Ambient Strength", Rnd.getAmbient(), 0.0f, 1.0f);
+		ImGui::SliderFloat("Specular Strenth", Rnd.getSpecular(), 0.0f, 4096.0f);
+	}
+
+	ImGui::Text("Lights");
+	if (ImGui::Button("Add PointLight"))
+	{
+		Rnd.CreateLight(Renderer::lightType::P_LIGHT);
+	}
+
+	for (int i = 0; i < Rnd.getNumPointLights(); i++)
+	{
+		std::string name = "Point Light " + std::to_string(i + 1);
+		std::string position = "Position##" + std::to_string(i + 1);
+		std::string linear = "Linear##" + std::to_string(i + 1);
+		std::string quadratic = "Quadratic##" + std::to_string(i + 1);
+		std::string constant = "Constant##" + std::to_string(i + 1);
+		std::string color = "Light Color##" + std::to_string(i + 1);
+
+		ImGui::Text(name.c_str());
+		ImGui::SliderFloat3(position.c_str(), Rnd.getPlightPos(i), -5.0f, 5.0f);
+		ImGui::SliderFloat(linear.c_str(), Rnd.getPlightLinear(i), 0.0f, 5.0f);
+		ImGui::SliderFloat(quadratic.c_str(), Rnd.getPlightQuadratic(i), 0.0f, 5.0f);
+		ImGui::SliderFloat(constant.c_str(), Rnd.getPlightConstant(i), 0.0f, 5.0f);
+		ImGui::ColorEdit3(color.c_str(), Rnd.getPlightColor(i));
 	}
 }

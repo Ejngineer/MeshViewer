@@ -5,9 +5,13 @@
 #include "GLFW/glfw3.h"
 #include  "Object.h"
 #include "Objects/Triangle.h"
+#include "Objects/Cube.h"
 #include "Shader.h"
 #include "VertexArray.h"
 #include "VertexBuffer.h"
+#include "Light.h"
+#include "Objects/PointLight.h"
+
 
 /*Singleton for creation and deletion of 
 geomety/models and shaders. Also responsible for
@@ -20,8 +24,17 @@ public:
 	enum Shape
 	{
 		NONE,
-		TRIANGLE
+		TRIANGLE,
+		CUBE,
 	};
+
+	enum class lightType
+	{
+		NONE,
+		P_LIGHT,
+		DIR_LIGHT
+	};
+
 public:
 	/*Constructors/destructor*/
 	Renderer();
@@ -40,8 +53,14 @@ public:
 	/*Bind geometry to our renderer*/
 	void CreateObject(const Shape& shp);
 
+	/**/
+	void CreateLight(const lightType& light);
+
 	/*Bind shader to our renderer*/
 	void CreateShader(const std::string& path);
+
+	/*Function to setup uniform data passed to shaders*/
+	void setUniforms();
 
 	/*Invoke draw call for our object*/
 	void DrawObject();
@@ -58,6 +77,9 @@ public:
 	/*Setup Framebuffer to render texture to*/
 	void SetupFBO(float width, float height);
 
+	/*Toggle render mode*/
+	void ToggleModes(int mode = 0);
+
 	/*Change shader color uniform value*/
 	float* getColor() { return glm::value_ptr(Color); }
 
@@ -67,9 +89,28 @@ public:
 	/*Change object scale*/
 	float* getScale() { return glm::value_ptr(Scale); }
 
+	float* GetRotation() { return glm::value_ptr(RotAxis); }
+	
 	/*Change object rotation*/
 	void Rotate();
-	float* GetRotation() { return glm::value_ptr(RotAxis); }
+
+	/*Retrive pointer to specific point light position*/
+	float* getPlightPos(int idx) { return Plights[idx]->getPositionRef(); }
+
+	float* getPlightColor(int idx) { return Plights[idx]->getLightColorRef(); }
+
+	float* getPlightConstant(int idx) { return Plights[idx]->getConstantRef(); }
+
+	float* getPlightLinear(int idx) { return Plights[idx]->getLinearRef(); }
+
+	float* getPlightQuadratic(int idx) { return Plights[idx]->getQuadraticRef(); }
+
+	float* getAmbient() { return &AmbientStrength; }
+
+	float* getSpecular() { return &SpecularStrength; }
+
+	size_t getNumPointLights() { return Plights.size(); }
+	
 private:
 	/*framebuffer texture is applie to this quad*/
 	std::vector<float> frameQuad = 
@@ -82,11 +123,15 @@ private:
 		-1.0f, -1.0f, 0.0f, 0.0f, 0.0f,
 	};
 
+	/*light data members*/
+	std::vector<PointLight*> Plights;
+
 private:
 	/*data members*/
 	VertexArray quadVAO;
 	VertexBuffer quadVBO;
 	unsigned int FBO;
+	unsigned int RBO;
 	unsigned int frameTexture;
 	Shader frameShader;
 
@@ -100,7 +145,7 @@ private:
 	const glm::mat4 view = glm::lookAt(eye, center, up);
 	glm::mat4 projection = glm::mat4(0.0f);
 
-	/*Projection requires "Field of view" value
+	/*Projection requires "Field of view" value.
 	can be adjusted*/
 	float FOV = 45.0f;
 
@@ -108,7 +153,7 @@ private:
 	float frameWidth = 1200.0f;
 	float frameHeight = 900.0f;
 	
-	/*geometr/model data members*/
+	/*geometry/model data members*/
 	Object* Obj;
 
 	/*shader uniforms*/
@@ -117,6 +162,11 @@ private:
 	glm::vec3 Trans = glm::vec3(0.0f);
 	glm::vec3 Scale = glm::vec3(1.0f);
 	glm::vec3 RotAxis = glm::vec3(0.0f);
+	float AmbientStrength = 1.0f;
+	float SpecularStrength = 2.0f;
+
+	/*Variable to toggle wired or shaded object*/
+	int Mode = 0;
 };
 
 #endif

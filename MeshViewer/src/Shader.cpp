@@ -108,7 +108,13 @@ void Shader::setNum1i(const std::string& name, int v0)
     glUniform1i(loc, v0);
 }
 
-void Shader::setvec3f(const std::string name, glm::vec3 input)
+void Shader::setFloat1f(const std::string& name, float v0)
+{
+    unsigned int loc = glGetUniformLocation(ID, name.c_str());
+    glUniform1f(loc, v0);
+}
+
+void Shader::setvec3f(const std::string& name, glm::vec3 input)
 {
     unsigned int loc = glGetUniformLocation(ID, name.c_str());
     glUniform3fv(loc, 1, glm::value_ptr(input));

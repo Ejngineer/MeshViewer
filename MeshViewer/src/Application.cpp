@@ -15,7 +15,7 @@ int Application::Init()
 {	
 	//Rnd.SetViewPort(800, 600);
 	Rnd.Enable();
-
+	
 	return 0;
 }
 

@@ -14,6 +14,13 @@
             "Uitype": "TwoD",
             "Texture": true,
             "Path": false
+        },
+        {
+            "name": "Cube",
+            "ObjNo":2,
+            "Uitype": "ThreeD",
+            "Texture": true,
+            "Path": false
         }
     ]
 }

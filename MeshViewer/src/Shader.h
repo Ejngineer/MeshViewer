@@ -12,8 +12,12 @@ namespace SHADERS
 {
 	constexpr auto defaultVert = "shaders/defaultvert.glsl";
 	constexpr auto defaultFrag = "shaders/defaultfrag.glsl";
+
 	constexpr auto frameVert = "shaders/framevert.glsl";
 	constexpr auto frameFrag = "shaders/framefrag.glsl";
+
+	constexpr auto phongVert = "shaders/PhongVert.glsl";
+	constexpr auto phongFrag = "shaders/PhongFrag.glsl";
 }
 
 class Shader
@@ -30,7 +34,8 @@ public:
 
 	void setMat4f(const std::string& name, glm::mat4 input);
 	void setNum1i(const std::string& name, int v0);
-	void setvec3f(const std::string name, glm::vec3 input);
+	void setvec3f(const std::string& name, glm::vec3 input);
+	void setFloat1f(const std::string& name, float v0);
 	void Use() { glUseProgram(ID); };
 
 
