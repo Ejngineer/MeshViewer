@@ -84,6 +84,14 @@ void Renderer::CreateLight(const lightType& light)
 	}
 }
 
+void Renderer::DeleteLight()
+{
+	if (Plights.size() > 0)
+	{
+		Plights.erase(Plights.end() - 1);
+	}
+}
+
 void Renderer::CreateShader(const std::string& path)
 {
 	//shader.load("../shaders/defaultvert.glsl", "../shaders/defaultfrag.glsl");

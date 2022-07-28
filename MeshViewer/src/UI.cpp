@@ -169,6 +169,11 @@ void UI::DrawElement()
 	{
 		Rnd.CreateLight(Renderer::lightType::P_LIGHT);
 	}
+	ImGui::SameLine();
+	if (ImGui::Button("Delete PointLight"))
+	{
+		Rnd.DeleteLight();
+	}
 
 	for (int i = 0; i < Rnd.getNumPointLights(); i++)
 	{

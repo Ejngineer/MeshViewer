@@ -58,6 +58,9 @@ public:
 	/**/
 	void CreateLight(const lightType& light);
 
+	/*Remove light from light list*/
+	void DeleteLight();
+
 	/*Bind shader to our renderer*/
 	void CreateShader(const std::string& path);
 
