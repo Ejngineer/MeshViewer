@@ -21,7 +21,7 @@ private:
 	std::vector<const char*> ObjNames;
 	std::string ObjUiType = "NONE";
 	bool ObjisTexture = false;
-	bool ObjisPath = false;
+	std::string path;
 	Json::Value ObjectList;
 	Window& Wnd;
 	Renderer& Rnd;
@@ -34,7 +34,7 @@ private:
 	ImGuiWindowFlags flags = ( ImGuiWindowFlags_NoResize |
 							   ImGuiWindowFlags_NoMove |
 							   ImGuiWindowFlags_NoCollapse
-							);
+							 );
 public:
 	UI() = default;
 	UI(Window& Wnd, Renderer& Rnd);
@@ -42,7 +42,7 @@ public:
 	void Render();
 	void DrawElement();
 	void ParseJSON(Json::Value& ObjList);
-	void setUI(Renderer::Shape shape);
+	void setUI(int selected);
 };
 
 #endif

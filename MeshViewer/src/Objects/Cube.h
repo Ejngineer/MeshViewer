@@ -5,6 +5,7 @@
 #include "../VertexBuffer.h"
 #include "../IndexBuffer.h"
 #include "../Object.h"
+#include "../Shader.h"
 #include "glm.hpp"
 #include "gtc/type_ptr.hpp"
 #include "gtc/matrix_transform.hpp"
@@ -72,7 +73,9 @@ public:
 	void Create() override;
 	float* GetData() override { return CubeBuf.data(); }
 	size_t  GetSize() override { return CubeBuf.size() * sizeof(float); }
-	float* GetTranslation() override { return ObjTrans; }
+	float* GetTranslation() { return ObjTrans; }
+	void setPath(const char* path = nullptr) {};
+	void setShader(Shader& shader) { };
 };
 
 #endif

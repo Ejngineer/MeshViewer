@@ -39,7 +39,7 @@ void Renderer::Clear()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void Renderer::CreateObject(const Shape& shp)
+void Renderer::CreateObject(const Shape& shp, const char* path)
 {
 	if (shp == Shape::NONE)
 	{
@@ -60,7 +60,14 @@ void Renderer::CreateObject(const Shape& shp)
 		Obj->Create();
 	}
 
-
+	if (shp == Shape::MODEL)
+	{
+		delete Obj;
+		Obj = new Model();
+		Obj->setPath(path);
+		Obj->setShader(shader);
+		Obj->Create();
+	}
 }
 
 void Renderer::CreateLight(const lightType& light)

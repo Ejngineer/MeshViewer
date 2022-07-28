@@ -61,16 +61,21 @@ void UI::Render()
 		switch (currSelected)
 		{
 		case 0:
+			setUI(currSelected);
 			Rnd.CreateObject(Renderer::Shape::NONE);
-			setUI(Renderer::Shape::NONE);
 			break;
 		case 1:
+			setUI(currSelected);
 			Rnd.CreateObject(Renderer::Shape::TRIANGLE);
-			setUI(Renderer::Shape::TRIANGLE);
 			break;
 		case 2:
+			setUI(currSelected);
 			Rnd.CreateObject(Renderer::Shape::CUBE);
-			setUI(Renderer::Shape::CUBE);
+			break;
+		case 3:
+			path = ObjectList[currSelected]["Path"].asString();
+			setUI(currSelected);
+			Rnd.CreateObject(Renderer::Shape::MODEL, path.c_str());
 			break;
 		}
 	}
@@ -98,10 +103,10 @@ void UI::ParseJSON(Json::Value& ObjList)
 	}
 }
 
-void UI::setUI(Renderer::Shape shape)
+void UI::setUI(int selected)
 {
-	ObjUiType = ObjectList[shape]["Uitype"].asString();
-	ObjisTexture = ObjectList[shape]["Texture"].asBool();
+	ObjUiType = ObjectList[selected]["Uitype"].asString();
+	ObjisTexture = ObjectList[selected]["Texture"].asBool();
 }
 
 void UI::DrawElement()
@@ -138,6 +143,17 @@ void UI::DrawElement()
 	}
 
 	if (ObjUiType == "ThreeD")
+	{
+		ImGui::ColorEdit3("Color", Rnd.getColor());
+		ImGui::Text("Transform");
+		ImGui::SliderFloat2("Translation", Rnd.getTransform(), -5.0f, 5.0f);
+		ImGui::SliderFloat3("Scale", Rnd.getScale(), 0.0f, 10.0f);
+		ImGui::SliderFloat3("Rotation", Rnd.GetRotation(), 0.0f, 360.0f);
+		ImGui::SliderFloat("Ambient Strength", Rnd.getAmbient(), 0.0f, 1.0f);
+		ImGui::SliderFloat("Specular Strenth", Rnd.getSpecular(), 0.0f, 4096.0f);
+	}
+
+	if (ObjUiType == "Model")
 	{
 		ImGui::ColorEdit3("Color", Rnd.getColor());
 		ImGui::Text("Transform");

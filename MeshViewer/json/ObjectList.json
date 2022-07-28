@@ -1,26 +1,33 @@
 {
     "Objects":
     [
-        {
-            "name": "None",       
-            "ObjNo": 0,
-            "Uitype": "NONE",
-            "Texture": false,
-            "Path": false
-        },
-        {
-            "name": "Triangle",
-            "ObjNo":1,
-            "Uitype": "TwoD",
-            "Texture": true,
-            "Path": false
-        },
-        {
-            "name": "Cube",
-            "ObjNo":2,
-            "Uitype": "ThreeD",
-            "Texture": true,
-            "Path": false
-        }
+      {
+        "name": "None",
+        "ObjNo": 0,
+        "Uitype": "NONE",
+        "Texture": false,
+        "Path": "0"
+      },
+      {
+        "name": "Triangle",
+        "ObjNo": 1,
+        "Uitype": "TwoD",
+        "Texture": true,
+        "Path": "1"
+      },
+      {
+        "name": "Cube",
+        "ObjNo": 2,
+        "Uitype": "ThreeD",
+        "Texture": true,
+        "Path": "3"
+      },
+      {
+        "name": "Teapot",
+        "ObjNo": 3,
+        "Uitype": "Model",
+        "Texture": false,
+        "Path": "Models/utah-teapot-continous-quads/teapot_sketchfab_export.obj.obj"
+      }
     ]
 }

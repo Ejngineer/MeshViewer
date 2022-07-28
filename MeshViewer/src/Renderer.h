@@ -6,6 +6,7 @@
 #include  "Object.h"
 #include "Objects/Triangle.h"
 #include "Objects/Cube.h"
+#include "Objects/Model.h"
 #include "Shader.h"
 #include "VertexArray.h"
 #include "VertexBuffer.h"
@@ -26,6 +27,7 @@ public:
 		NONE,
 		TRIANGLE,
 		CUBE,
+		MODEL
 	};
 
 	enum class lightType
@@ -51,7 +53,7 @@ public:
 	void Clear();
 
 	/*Bind geometry to our renderer*/
-	void CreateObject(const Shape& shp);
+	void CreateObject(const Shape& shp, const char* path = nullptr);
 
 	/**/
 	void CreateLight(const lightType& light);
@@ -66,7 +68,7 @@ public:
 	void DrawObject();
 
 	/*Retrieve tranform data from our Obj data member*/
-	float* GetObjectTranslation() { return Obj->GetTranslation(); }
+	//float* GetObjectTranslation() { return Obj->GetTranslation(); }
 
 	/*Set viewport values*/
 	void SetViewPort(int width, int height);
