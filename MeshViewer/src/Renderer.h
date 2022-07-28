@@ -85,6 +85,9 @@ public:
 	/*Toggle render mode*/
 	void ToggleModes(int mode = 0);
 
+	/*Return fov*/
+	float* getFOV() { return &FOV; }
+
 	/*Change shader color uniform value*/
 	float* getColor() { return glm::value_ptr(Color); }
 

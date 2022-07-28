@@ -128,7 +128,7 @@ void UI::DrawElement()
 			Rnd.ToggleModes(2);
 		}
 
-		
+		ImGui::SliderFloat("FOV", Rnd.getFOV(), 0.0f, 120.0f);
 	}
 
 	if (ObjUiType == "TwoD")
