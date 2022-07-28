@@ -6,21 +6,21 @@
         "ObjNo": 0,
         "Uitype": "NONE",
         "Texture": false,
-        "Path": "0"
+        "Path": ""
       },
       {
         "name": "Triangle",
         "ObjNo": 1,
         "Uitype": "TwoD",
         "Texture": true,
-        "Path": "1"
+        "Path": ""
       },
       {
         "name": "Cube",
         "ObjNo": 2,
         "Uitype": "ThreeD",
         "Texture": true,
-        "Path": "3"
+        "Path": ""
       },
       {
         "name": "Teapot",
@@ -28,6 +28,27 @@
         "Uitype": "Model",
         "Texture": false,
         "Path": "Models/utah-teapot-continous-quads/teapot_sketchfab_export.obj.obj"
+      },
+      {
+        "name": "Helmet",
+        "ObjNo": 4,
+        "Uitype": "Model",
+        "Texture": false,
+        "Path": "Models/visored-barbuta-helmet/model.dae"
+      },
+      {
+        "name": "Satellite",
+        "ObjNo": 5,
+        "Uitype": "Model",
+        "Texture": false,
+        "Path": "Models/satellite-modul/model.dae"
+      },
+      {
+        "name": "Skull",
+        "ObjNo": 6,
+        "Uitype": "Model",
+        "Texture": false,
+        "Path": "Models/human-skull-and-neck/kallo_DM.obj"
       }
     ]
 }

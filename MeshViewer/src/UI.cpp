@@ -56,7 +56,7 @@ void UI::Render()
 	ImGui::Combo("Objects", &currSelected, ObjNames.data(), (int)ObjNames.size());
 	
 	if (prevSelected != currSelected)
-	{
+	{	
 		prevSelected = currSelected;
 		switch (currSelected)
 		{
@@ -72,7 +72,7 @@ void UI::Render()
 			setUI(currSelected);
 			Rnd.CreateObject(Renderer::Shape::CUBE);
 			break;
-		case 3:
+		default:
 			path = ObjectList[currSelected]["Path"].asString();
 			setUI(currSelected);
 			Rnd.CreateObject(Renderer::Shape::MODEL, path.c_str());
@@ -146,7 +146,7 @@ void UI::DrawElement()
 	{
 		ImGui::ColorEdit3("Color", Rnd.getColor());
 		ImGui::Text("Transform");
-		ImGui::SliderFloat2("Translation", Rnd.getTransform(), -5.0f, 5.0f);
+		ImGui::SliderFloat3("Translation", Rnd.getTransform(), -5.0f, 5.0f);
 		ImGui::SliderFloat3("Scale", Rnd.getScale(), 0.0f, 10.0f);
 		ImGui::SliderFloat3("Rotation", Rnd.GetRotation(), 0.0f, 360.0f);
 		ImGui::SliderFloat("Ambient Strength", Rnd.getAmbient(), 0.0f, 1.0f);
@@ -157,7 +157,7 @@ void UI::DrawElement()
 	{
 		ImGui::ColorEdit3("Color", Rnd.getColor());
 		ImGui::Text("Transform");
-		ImGui::SliderFloat2("Translation", Rnd.getTransform(), -5.0f, 5.0f);
+		ImGui::SliderFloat3("Translation", Rnd.getTransform(), -5.0f, 5.0f);
 		ImGui::SliderFloat3("Scale", Rnd.getScale(), 0.0f, 10.0f);
 		ImGui::SliderFloat3("Rotation", Rnd.GetRotation(), 0.0f, 360.0f);
 		ImGui::SliderFloat("Ambient Strength", Rnd.getAmbient(), 0.0f, 1.0f);
