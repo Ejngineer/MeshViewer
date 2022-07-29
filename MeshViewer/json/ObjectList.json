@@ -1,54 +1,82 @@
 {
-    "Objects":
-    [
-      {
-        "name": "None",
-        "ObjNo": 0,
-        "Uitype": "NONE",
-        "Texture": false,
-        "Path": ""
-      },
-      {
-        "name": "Triangle",
-        "ObjNo": 1,
-        "Uitype": "TwoD",
-        "Texture": true,
-        "Path": ""
-      },
-      {
-        "name": "Cube",
-        "ObjNo": 2,
-        "Uitype": "ThreeD",
-        "Texture": true,
-        "Path": ""
-      },
-      {
-        "name": "Teapot",
-        "ObjNo": 3,
-        "Uitype": "Model",
-        "Texture": false,
-        "Path": "Models/utah-teapot-continous-quads/teapot_sketchfab_export.obj.obj"
-      },
-      {
-        "name": "Helmet",
-        "ObjNo": 4,
-        "Uitype": "Model",
-        "Texture": false,
-        "Path": "Models/visored-barbuta-helmet/model.dae"
-      },
-      {
-        "name": "Satellite",
-        "ObjNo": 5,
-        "Uitype": "Model",
-        "Texture": false,
-        "Path": "Models/satellite-modul/model.dae"
-      },
-      {
-        "name": "Skull",
-        "ObjNo": 6,
-        "Uitype": "Model",
-        "Texture": false,
-        "Path": "Models/human-skull-and-neck/kallo_DM.obj"
-      }
-    ]
+  "Objects": [
+    {
+      "name": "None",
+      "ObjNo": 0,
+      "Uitype": "NONE",
+      "Texture": false,
+      "Path": ""
+    },
+    {
+      "name": "Triangle",
+      "ObjNo": 1,
+      "Uitype": "TwoD",
+      "Texture": true,
+      "Path": ""
+    },
+    {
+      "name": "Cube",
+      "ObjNo": 2,
+      "Uitype": "ThreeD",
+      "Texture": true,
+      "Path": ""
+    },
+    {
+      "name": "Teapot",
+      "ObjNo": 3,
+      "Uitype": "Model",
+      "Texture": false,
+      "Path": "Models/utah-teapot-continous-quads/teapot_sketchfab_export.obj.obj"
+    },
+    {
+      "name": "Helmet",
+      "ObjNo": 4,
+      "Uitype": "Model",
+      "Texture": false,
+      "Path": "Models/visored-barbuta-helmet/model.dae"
+    },
+    {
+      "name": "Satellite",
+      "ObjNo": 5,
+      "Uitype": "Model",
+      "Texture": false,
+      "Path": "Models/satellite-modul/model.dae"
+    },
+    {
+      "name": "Skull",
+      "ObjNo": 6,
+      "Uitype": "Model",
+      "Texture": false,
+      "Path": "Models/human-skull-and-neck/kallo_DM.obj"
+    },
+    {
+      "name": "Gun",
+      "ObjNo": 7,
+      "Uitype": "Model",
+      "Texture": false,
+      "Path": "Models/bandygun/bandygun3_notUDIm.fbx"
+    },
+    {
+      "name": "Stanford Bunny",
+      "ObjNo": 8,
+      "Uitype": "Model",
+      "Texture": false,
+      "Path": "Models/stanford-bunny/bunny.obj"
+    },
+    {
+      "name": "Nanosuit",
+      "ObjNo": 9,
+      "Uitype": "Model",
+      "Texture": false,
+      "Path": "Models/Nanosuit/nanosuit.obj"
+    },
+    {
+      "name": "Mech",
+      "ObjNo": 10,
+      "Uitype": "Model",
+      "Texture": false,
+      "Path": "Models/vr-mech/decimated mech.fbx"
+    }
+
+  ]
 }

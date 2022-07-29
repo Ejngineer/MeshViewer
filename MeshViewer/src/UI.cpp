@@ -161,7 +161,7 @@ void UI::DrawElement()
 		ImGui::SliderFloat3("Scale", Rnd.getScale(), 0.0f, 10.0f);
 		ImGui::SliderFloat3("Rotation", Rnd.GetRotation(), 0.0f, 360.0f);
 		ImGui::SliderFloat("Ambient Strength", Rnd.getAmbient(), 0.0f, 1.0f);
-		ImGui::SliderFloat("Specular Strenth", Rnd.getSpecular(), 0.0f, 4096.0f);
+		ImGui::SliderFloat("Specular Strenth", Rnd.getSpecular(), 2.0f, 4096.0f);
 	}
 
 	ImGui::Text("Lights");
@@ -186,9 +186,9 @@ void UI::DrawElement()
 
 		ImGui::Text(name.c_str());
 		ImGui::SliderFloat3(position.c_str(), Rnd.getPlightPos(i), -5.0f, 5.0f);
-		ImGui::SliderFloat(linear.c_str(), Rnd.getPlightLinear(i), 0.0f, 5.0f);
-		ImGui::SliderFloat(quadratic.c_str(), Rnd.getPlightQuadratic(i), 0.0f, 5.0f);
-		ImGui::SliderFloat(constant.c_str(), Rnd.getPlightConstant(i), 0.0f, 5.0f);
+		ImGui::SliderFloat(linear.c_str(), Rnd.getPlightLinear(i), 0.0f, 1.0f, "%.6f");
+		ImGui::SliderFloat(quadratic.c_str(), Rnd.getPlightQuadratic(i), 0.0f, 2.0f, "%.6f");
+		ImGui::SliderFloat(constant.c_str(), Rnd.getPlightConstant(i), 0.0f, 1.0f);
 		ImGui::ColorEdit3(color.c_str(), Rnd.getPlightColor(i));
 	}
 }
