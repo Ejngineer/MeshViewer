@@ -18,6 +18,9 @@ namespace SHADERS
 
 	constexpr auto phongVert = "shaders/PhongVert.glsl";
 	constexpr auto phongFrag = "shaders/PhongFrag.glsl";
+
+	constexpr auto textureVert = "shaders/TextureVert.glsl";
+	constexpr auto textureFrag = "shaders/TextureFrag.glsl";
 }
 
 class Shader

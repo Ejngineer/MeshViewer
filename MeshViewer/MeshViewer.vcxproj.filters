@@ -23,6 +23,8 @@
     <None Include="vendor\glfw\lib-vc2022\glfw3.dll" />
     <None Include="shaders\PhongVert.glsl" />
     <None Include="shaders\PhongFrag.glsl" />
+    <None Include="shaders\TextureVert.glsl" />
+    <None Include="shaders\TextureFrag.glsl" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Objects\Triangle.cpp">
@@ -101,6 +103,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\stb_image.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Objects\DirectLight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -199,6 +204,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="vendor\stb_image\stb_image.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Objects\DirectLight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

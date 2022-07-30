@@ -33,7 +33,7 @@
       "ObjNo": 4,
       "Uitype": "Model",
       "Texture": false,
-      "Path": "Models/visored-barbuta-helmet/model.dae"
+      "Path": "Models/visored-barbuta-helmet/source/model/model/model.dae"
     },
     {
       "name": "Satellite",

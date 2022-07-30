@@ -12,6 +12,7 @@
 #include "VertexBuffer.h"
 #include "Light.h"
 #include "Objects/PointLight.h"
+#include "Objects/DirectLight.h"
 
 
 /*Singleton for creation and deletion of 
@@ -59,7 +60,9 @@ public:
 	void CreateLight(const lightType& light);
 
 	/*Remove light from light list*/
-	void DeleteLight();
+	void DeletePLight();
+
+	void DeleteDLight();
 
 	/*Bind shader to our renderer*/
 	void CreateShader(const std::string& path);
@@ -84,6 +87,9 @@ public:
 
 	/*Toggle render mode*/
 	void ToggleModes(int mode = 0);
+
+	/*Toggle shader mode*/
+	void ToggleShader(int mode = 0);
 
 	/*Return fov*/
 	float* getFOV() { return &FOV; }
@@ -113,11 +119,17 @@ public:
 
 	float* getPlightQuadratic(int idx) { return Plights[idx]->getQuadraticRef(); }
 
+	float* getDLightDirection(int idx) { return DLights[idx]->getDirectionRef(); }
+
+	float* getDLightColor(int idx) { return DLights[idx]->getColorRef(); }
+
 	float* getAmbient() { return &AmbientStrength; }
 
 	float* getSpecular() { return &SpecularStrength; }
 
 	size_t getNumPointLights() { return Plights.size(); }
+
+	size_t getNumDirLights() { return DLights.size(); }
 	
 private:
 	/*framebuffer texture is applie to this quad*/
@@ -133,6 +145,7 @@ private:
 
 	/*light data members*/
 	std::vector<PointLight*> Plights;
+	std::vector<DirectLight*> DLights;
 
 private:
 	/*data members*/
@@ -173,8 +186,10 @@ private:
 	float AmbientStrength = 1.0f;
 	float SpecularStrength = 2.0f;
 
-	/*Variable to toggle wired or shaded object*/
-	int Mode = 0;
+	/*Variables to change how object is drawn*/
+	int RenderMode = 0;
+	int ShaderMode = 0;
+
 };
 
 #endif

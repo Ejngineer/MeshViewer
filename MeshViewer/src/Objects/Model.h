@@ -12,13 +12,16 @@
 
 #include <vector>
 #include <iostream>
+#include <string>
+#include <fstream>
+#include <sstream>
 
 class Model : public Object
 {
 private:
 	std::vector<Mesh> meshes;
 	std::string directory;
-	const char* path;
+	std::string path;
 	std::vector<Texture> textures_loaded;
 
 	float ObjTrans[3] = { 0.0f,0.0f,0.0f };

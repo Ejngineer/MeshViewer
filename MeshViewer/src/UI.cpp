@@ -128,51 +128,80 @@ void UI::DrawElement()
 			Rnd.ToggleModes(2);
 		}
 
+		if (ImGui::Button("Default Shader"))
+		{
+			Rnd.ToggleShader(0);
+		}
+		ImGui::SameLine();
+		if (ImGui::Button("Phong Shader"))
+		{
+			Rnd.ToggleShader(1);
+		}
+		if (ObjUiType == "Model")
+		{
+			ImGui::SameLine();
+			if (ImGui::Button("Texture Shader"))
+			{
+				Rnd.ToggleShader(2);
+			}
+		}
+
 		ImGui::SliderFloat("FOV", Rnd.getFOV(), 0.0f, 120.0f);
-	}
 
-	if (ObjUiType == "TwoD")
-	{
-		ImGui::ColorEdit3("Color", Rnd.getColor());
-		ImGui::Text("Transform");
-		ImGui::SliderFloat2("Translation", Rnd.getTransform(), -5.0f, 5.0f);
-		ImGui::SliderFloat2("Scale", Rnd.getScale(), 0.0f, 10.0f);
-		ImGui::SliderFloat3("Rotation", Rnd.GetRotation(), 0.0f, 360.0f);
-		ImGui::SliderFloat("Ambient Strength", Rnd.getAmbient(), 0.0f, 1.0f);
-		ImGui::SliderFloat("Specular Strenth", Rnd.getSpecular(), 2.0f, 1024.0f);
-	}
 
-	if (ObjUiType == "ThreeD")
-	{
-		ImGui::ColorEdit3("Color", Rnd.getColor());
-		ImGui::Text("Transform");
-		ImGui::SliderFloat3("Translation", Rnd.getTransform(), -5.0f, 5.0f);
-		ImGui::SliderFloat3("Scale", Rnd.getScale(), 0.0f, 10.0f);
-		ImGui::SliderFloat3("Rotation", Rnd.GetRotation(), 0.0f, 360.0f);
-		ImGui::SliderFloat("Ambient Strength", Rnd.getAmbient(), 0.0f, 1.0f);
-		ImGui::SliderFloat("Specular Strenth", Rnd.getSpecular(), 0.0f, 4096.0f);
-	}
+		if (ObjUiType == "TwoD")
+		{
+			ImGui::ColorEdit3("Color", Rnd.getColor());
+			ImGui::Text("Transform");
+			ImGui::SliderFloat2("Translation", Rnd.getTransform(), -5.0f, 5.0f);
+			ImGui::SliderFloat2("Scale", Rnd.getScale(), 0.0f, 10.0f);
+			ImGui::SliderFloat3("Rotation", Rnd.GetRotation(), 0.0f, 360.0f);
+			ImGui::SliderFloat("Ambient Strength", Rnd.getAmbient(), 0.0f, 1.0f);
+			ImGui::SliderFloat("Specular Strenth", Rnd.getSpecular(), 2.0f, 1024.0f);
+		}
 
-	if (ObjUiType == "Model")
-	{
-		ImGui::ColorEdit3("Color", Rnd.getColor());
-		ImGui::Text("Transform");
-		ImGui::SliderFloat3("Translation", Rnd.getTransform(), -5.0f, 5.0f);
-		ImGui::SliderFloat3("Scale", Rnd.getScale(), 0.0f, 10.0f);
-		ImGui::SliderFloat3("Rotation", Rnd.GetRotation(), 0.0f, 360.0f);
-		ImGui::SliderFloat("Ambient Strength", Rnd.getAmbient(), 0.0f, 1.0f);
-		ImGui::SliderFloat("Specular Strenth", Rnd.getSpecular(), 2.0f, 4096.0f);
+		if (ObjUiType == "ThreeD")
+		{
+			ImGui::ColorEdit3("Color", Rnd.getColor());
+			ImGui::Text("Transform");
+			ImGui::SliderFloat3("Translation", Rnd.getTransform(), -5.0f, 5.0f);
+			ImGui::SliderFloat3("Scale", Rnd.getScale(), 0.0f, 10.0f);
+			ImGui::SliderFloat3("Rotation", Rnd.GetRotation(), 0.0f, 360.0f);
+			ImGui::SliderFloat("Ambient Strength", Rnd.getAmbient(), 0.0f, 1.0f);
+			ImGui::SliderFloat("Specular Strenth", Rnd.getSpecular(), 0.0f, 4096.0f);
+		}
+
+		if (ObjUiType == "Model")
+		{
+			ImGui::ColorEdit3("Color", Rnd.getColor());
+			ImGui::Text("Transform");
+			ImGui::SliderFloat3("Translation", Rnd.getTransform(), -5.0f, 5.0f);
+			ImGui::SliderFloat3("Scale", Rnd.getScale(), 0.0f, 10.0f);
+			ImGui::SliderFloat3("Rotation", Rnd.GetRotation(), 0.0f, 360.0f);
+			ImGui::SliderFloat("Ambient Strength", Rnd.getAmbient(), 0.0f, 1.0f);
+			ImGui::SliderFloat("Specular Strenth", Rnd.getSpecular(), 2.0f, 4096.0f);
+		}
 	}
 
 	ImGui::Text("Lights");
-	if (ImGui::Button("Add PointLight"))
+	if (ImGui::Button("Add Point Light"))
 	{
 		Rnd.CreateLight(Renderer::lightType::P_LIGHT);
 	}
 	ImGui::SameLine();
-	if (ImGui::Button("Delete PointLight"))
+	if (ImGui::Button("Delete Point Light"))
 	{
-		Rnd.DeleteLight();
+		Rnd.DeletePLight();
+	}
+
+	if (ImGui::Button("Add Directiona Light"))
+	{
+		Rnd.CreateLight(Renderer::lightType::DIR_LIGHT);
+	}
+	ImGui::SameLine();
+	if (ImGui::Button("Delete Directional Light"))
+	{
+		Rnd.DeleteDLight();
 	}
 
 	for (int i = 0; i < Rnd.getNumPointLights(); i++)
@@ -182,7 +211,7 @@ void UI::DrawElement()
 		std::string linear = "Linear##" + std::to_string(i + 1);
 		std::string quadratic = "Quadratic##" + std::to_string(i + 1);
 		std::string constant = "Constant##" + std::to_string(i + 1);
-		std::string color = "Light Color##" + std::to_string(i + 1);
+		std::string color = "Point Light Color##" + std::to_string(i + 1);
 
 		ImGui::Text(name.c_str());
 		ImGui::SliderFloat3(position.c_str(), Rnd.getPlightPos(i), -5.0f, 5.0f);
@@ -190,5 +219,16 @@ void UI::DrawElement()
 		ImGui::SliderFloat(quadratic.c_str(), Rnd.getPlightQuadratic(i), 0.0f, 2.0f, "%.6f");
 		ImGui::SliderFloat(constant.c_str(), Rnd.getPlightConstant(i), 0.0f, 1.0f);
 		ImGui::ColorEdit3(color.c_str(), Rnd.getPlightColor(i));
+	}
+
+	for (int i = 0; i < Rnd.getNumDirLights(); i++)
+	{
+		std::string name = "Directional Light " + std::to_string(i + 1);
+		std::string direction = "Direction##" + std::to_string(i + 1);
+		std::string color = "Directional Light Color##" + std::to_string(i + 1);
+
+		ImGui::Text(name.c_str());
+		ImGui::SliderFloat3(direction.c_str(), Rnd.getDLightDirection(i), -10.0f, 10.0f);
+		ImGui::ColorEdit3(color.c_str(), Rnd.getDLightColor(i));
 	}
 }
