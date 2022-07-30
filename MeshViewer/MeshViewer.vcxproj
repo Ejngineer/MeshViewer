@@ -159,7 +159,6 @@
     <None Include="shaders\PhongFrag.glsl" />
     <None Include="shaders\PhongVert.glsl" />
     <None Include="shaders\TextureFrag.glsl" />
-    <None Include="shaders\TextureVert.glsl" />
     <None Include="vendor\glfw\lib-vc2022\glfw3.dll" />
   </ItemGroup>
   <ItemGroup>
@@ -168,7 +167,6 @@
     <ClCompile Include="src\IndexBuffer.cpp" />
     <ClCompile Include="src\Object.cpp" />
     <ClCompile Include="src\Objects\Cube.cpp" />
-    <ClCompile Include="src\Objects\DirectLight.cpp" />
     <ClCompile Include="src\Objects\Mesh.cpp" />
     <ClCompile Include="src\Objects\Model.cpp" />
     <ClCompile Include="src\Objects\PointLight.cpp" />
@@ -197,7 +195,6 @@
     <ClInclude Include="src\Object.h" />
     <ClInclude Include="src\Light.h" />
     <ClInclude Include="src\Objects\Cube.h" />
-    <ClInclude Include="src\Objects\DirectLight.h" />
     <ClInclude Include="src\Objects\Mesh.h" />
     <ClInclude Include="src\Objects\Model.h" />
     <ClInclude Include="src\Objects\PointLight.h" />

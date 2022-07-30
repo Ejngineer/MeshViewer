@@ -22,8 +22,8 @@ void Renderer::Init()
 
 	quadVAO.UnBind();
 
-	shader.load(SHADERS::defaultVert, SHADERS::defaultFrag);
-	//shader.load(SHADERS::phongVert, SHADERS::phongFrag);
+	//shader.load(SHADERS::defaultVert, SHADERS::defaultFrag);
+	shader.load(SHADERS::phongVert, SHADERS::phongFrag);
 	frameShader.load(SHADERS::frameVert, SHADERS::frameFrag);
 
 	frameShader.Use();
@@ -82,27 +82,13 @@ void Renderer::CreateLight(const lightType& light)
 		PointLight* plight = new PointLight();
 		Plights.push_back(plight);
 	}
-
-	if (light == lightType::DIR_LIGHT)
-	{
-		DirectLight* dlight = new DirectLight();
-		DLights.push_back(dlight);
-	}
 }
 
-void Renderer::DeletePLight()
+void Renderer::DeleteLight()
 {
 	if (Plights.size() > 0)
 	{
 		Plights.erase(Plights.end() - 1);
-	}
-}
-
-void Renderer::DeleteDLight()
-{
-	if (DLights.size() > 0)
-	{
-		DLights.erase(DLights.end() - 1);
 	}
 }
 
@@ -126,7 +112,6 @@ void Renderer::setUniforms()
 	shader.setvec3f("color", Color);
 
 	shader.setNum1i("numPlights", int(Plights.size()));
-	shader.setNum1i("numDlights", int(DLights.size()));
 	shader.setFloat1f("ambientStr", AmbientStrength);
 	shader.setFloat1f("specStr", SpecularStrength);
 	shader.setvec3f("viewPos", eye);
@@ -139,12 +124,6 @@ void Renderer::setUniforms()
 		shader.setFloat1f("plights[" + std::to_string(i) + "].quadratic", Plights[i]->getQuadratic());
 		shader.setFloat1f("plights[" + std::to_string(i) + "].constant", Plights[i]->getConstant());
 	}
-
-	for (int i = 0; i < DLights.size(); i++)
-	{
-		shader.setvec3f("dlights[" + std::to_string(i) + "].Dir", DLights[i]->getDirection());
-		shader.setvec3f("dlights[" + std::to_string(i) + "].color", DLights[i]->getColor());
-	}
 }
 
 void Renderer::DrawObject()
@@ -155,31 +134,17 @@ void Renderer::DrawObject()
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		if (Obj != nullptr)
 		{
-			if (RenderMode == 0)
+			if (Mode == 0)
 			{
 				glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 			}
-			if (RenderMode == 1)
+			if (Mode == 1)
 			{
 				glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 			}
-			if (RenderMode == 2)
+			if (Mode == 2)
 			{
 				glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
-			}
-
-			if (ShaderMode == 0)
-			{
-				shader.load(SHADERS::defaultVert, SHADERS::defaultFrag);
-				
-			}
-			if (ShaderMode == 1)
-			{
-				shader.load(SHADERS::phongVert, SHADERS::phongFrag);
-			}
-			if (ShaderMode == 2)
-			{
-				shader.load(SHADERS::textureVert, SHADERS::textureFrag);
 			}
 
 			setUniforms();
@@ -248,12 +213,7 @@ void Renderer::SetupFBO(float width, float height)
 
 void Renderer::ToggleModes(int mode)
 {
-	RenderMode = mode;
-}
-
-void Renderer::ToggleShader(int mode)
-{
-	ShaderMode = mode;
+	Mode = mode;
 }
 
 void Renderer::Rotate()

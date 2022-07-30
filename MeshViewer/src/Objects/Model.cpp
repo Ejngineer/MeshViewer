@@ -12,7 +12,7 @@ void Model::Create()
 		std::cout << "ERROR::ASSIMP::" << import.GetErrorString() << std::endl;
 	}
 
-	directory = path.substr(0, path.find_last_of('/'));
+	directory = directory.substr(0, directory.find_last_of('/'));
 
 	processNode(scene->mRootNode, scene);
 }
@@ -81,6 +81,7 @@ Mesh Model::processMesh(aiMesh* mesh, const aiScene* scene)
 		}
 	}
 
+	if (mesh->mMaterialIndex >= 0)
 	{
 		aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];
 		std::vector<Texture> diffuseMaps = loadMaterialTexture(material,
@@ -119,7 +120,7 @@ std::vector<Texture> Model::loadMaterialTexture(aiMaterial* mat, aiTextureType t
 		if (!skip)
 		{
 			Texture texture;
-			texture.id = CreateTexture(str.C_Str(), this->directory);
+			texture.id = CreateTexture(str.C_Str(), directory);
 			texture.type = typeName;
 			texture.path = str.C_Str();
 			textures.push_back(texture);
@@ -134,7 +135,6 @@ unsigned int Model::CreateTexture(const char* path, std::string directory)
 	std::string filename = std::string(path);
 	filename = directory + '/' + filename;
 
-	std::cout << directory + "+" << std::endl;
 	unsigned int textureID;
 	glGenTextures(1, &textureID);
 
@@ -143,7 +143,7 @@ unsigned int Model::CreateTexture(const char* path, std::string directory)
 	unsigned char* data = stbi_load(filename.c_str(), &width, &height, &nrComponents, 0);
 	if (data)
 	{
-		GLenum format = GL_RGB;
+		GLenum format;
 
 		if (nrComponents == 1)
 		{
@@ -153,7 +153,7 @@ unsigned int Model::CreateTexture(const char* path, std::string directory)
 		{
 			format = GL_RGB;
 		}
-		else if(nrComponents == 4)
+		else
 		{
 			format = GL_RGBA;
 		}
