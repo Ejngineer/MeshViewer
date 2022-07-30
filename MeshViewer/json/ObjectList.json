@@ -11,14 +11,14 @@
       "name": "Triangle",
       "ObjNo": 1,
       "Uitype": "TwoD",
-      "Texture": true,
+      "Texture": false,
       "Path": ""
     },
     {
       "name": "Cube",
       "ObjNo": 2,
       "Uitype": "ThreeD",
-      "Texture": true,
+      "Texture": false,
       "Path": ""
     },
     {
@@ -26,14 +26,14 @@
       "ObjNo": 3,
       "Uitype": "Model",
       "Texture": false,
-      "Path": "Models/utah-teapot-continous-quads/teapot_sketchfab_export.obj.obj"
+      "Path": "Models/utah-teapot-continous-quads/teapot_sketchfab_export.obj"
     },
     {
       "name": "Helmet",
       "ObjNo": 4,
       "Uitype": "Model",
       "Texture": false,
-      "Path": "Models/visored-barbuta-helmet/source/model/model/model.dae"
+      "Path": "Models/visored-barbuta-helmet/model.dae"
     },
     {
       "name": "Satellite",
@@ -46,7 +46,7 @@
       "name": "Skull",
       "ObjNo": 6,
       "Uitype": "Model",
-      "Texture": false,
+      "Texture": true,
       "Path": "Models/human-skull-and-neck/kallo_DM.obj"
     },
     {
@@ -67,7 +67,7 @@
       "name": "Nanosuit",
       "ObjNo": 9,
       "Uitype": "Model",
-      "Texture": false,
+      "Texture": true,
       "Path": "Models/Nanosuit/nanosuit.obj"
     },
     {

@@ -137,7 +137,7 @@ void UI::DrawElement()
 		{
 			Rnd.ToggleShader(1);
 		}
-		if (ObjUiType == "Model")
+		if (ObjisTexture)
 		{
 			ImGui::SameLine();
 			if (ImGui::Button("Texture Shader"))
