@@ -32,6 +32,7 @@ Some of the main features provided by MeshViewer include:
 * Support for multiple file formats
 * Lightweight bloat free application 
 
+Fig. 2 Dot view of 3D skull model
 ![screenshot 4](https://user-images.githubusercontent.com/100335668/182234666-c33aa954-ce7f-4275-8c01-0ed125e54c02.jpg)
 ## Instructions
 
