@@ -32,8 +32,7 @@ Some of the main features provided by MeshViewer include:
 * Support for multiple file formats
 * Lightweight bloat free application 
 
-![screenshot 4](https://user-images.githubusercontent.com/100335668/182234523-d353cdc6-8811-46d3-9b99-d64232603f9f.jpg)
-
+![screenshot 4](https://user-images.githubusercontent.com/100335668/182234666-c33aa954-ce7f-4275-8c01-0ed125e54c02.jpg)
 ## Instructions
 
 ## Installation
