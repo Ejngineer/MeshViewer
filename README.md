@@ -14,6 +14,7 @@ Fig. 1 Mesh view of Stanford bunny
 5. [Challenges](#Challenges)
 ## Design
 MeshViewer is an Object Oriented app designed to be easy to use and easily scaled for storing and interacting with a large number of models. The structure of the software is kept simple and makes use of only a few design patterns (Factory, Singleton, etc). MeshViewer also makes use of several open source third party software. This includes:
+
 * GLFW for creating windows
 * Glad OpenGL loader/generator
 * Open Asset Importing (ASSIMP)
@@ -21,6 +22,8 @@ MeshViewer is an Object Oriented app designed to be easy to use and easily scale
 * ImGui Ui library 
 * Jsoncpp for parsing json files in C++
 * stb_image for loading textures
+
+Other than this, everything is built from scratch. MeshViewer is made up of three main components.The Window class is responsible for creating our window context that everything with be drawn on. It is also used for loading the opengl implementaion using GLAD. The UI class is responsible for setting up and drawing the UI using ImGui and Jsoncpp. Lastly, our Renderer class is responsible for drawing our 3D models and acts as a factory for model and light objects. 
 
 ## Installation
 
