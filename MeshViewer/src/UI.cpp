@@ -184,7 +184,7 @@ void UI::DrawElement()
 	}
 
 	ImGui::Text("Lights");
-	if (ImGui::Button("Add Point Light"))
+	if (ImGui::Button("Add Point Light") && Rnd.getNumPointLights() < 16)
 	{
 		Rnd.CreateLight(Renderer::lightType::P_LIGHT);
 	}
@@ -194,7 +194,7 @@ void UI::DrawElement()
 		Rnd.DeletePLight();
 	}
 
-	if (ImGui::Button("Add Directiona Light"))
+	if (ImGui::Button("Add Directiona Light") && Rnd.getNumDirLights() < 16)
 	{
 		Rnd.CreateLight(Renderer::lightType::DIR_LIGHT);
 	}
