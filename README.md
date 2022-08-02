@@ -67,7 +67,7 @@ Fig. 3 Typical UI setup in MeshViewer
 
 
 
-## Bugs
+## Known Issues
 * some .dae files have an issue where the index count label and actual number of index values are different, casuing an error in ASSIMP. 
  
 ## Future features
