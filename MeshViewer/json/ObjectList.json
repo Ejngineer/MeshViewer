@@ -26,7 +26,7 @@
       "ObjNo": 3,
       "Uitype": "Model",
       "Texture": false,
-      "Path": "Models/utah-teapot-continous-quads/teapot_sketchfab_export.obj.obj"
+      "Path": "Models/utah-teapot-continous-quads/teapot_sketchfab_export.obj"
     },
     {
       "name": "Helmet",

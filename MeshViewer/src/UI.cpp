@@ -137,14 +137,14 @@ void UI::DrawElement()
 		{
 			Rnd.ToggleShader(1);
 		}
-		if (ObjUiType == "Model")
+		/*if (ObjUiType == "Model")
 		{
 			ImGui::SameLine();
 			if (ImGui::Button("Texture Shader"))
 			{
 				Rnd.ToggleShader(2);
 			}
-		}
+		}*/
 
 		ImGui::SliderFloat("FOV", Rnd.getFOV(), 0.0f, 120.0f);
 
