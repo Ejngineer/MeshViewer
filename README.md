@@ -37,17 +37,21 @@ Fig. 2 Point view of 3D skull model
 
 ## Instructions
 #### Adding models
-MeshViewer creates a list of all possible models that can be loaded in from a JSON file. The JSON is initially empty with the exception of two hardcoded models. These are for getting familiar with the app's core functions. To add additional models to the json file simply follow this format.
+MeshViewer creates a list of all possible models that can be loaded in from a json file. The json is initially empty with the exception of two hardcoded models. These are for getting familiar with the app's core functions. Adding new models is simple and requires that the files for that model be placed in a folder on your local machine. It is best to store the files for the model in the same directory as the app. To add additional models to the json file simply follow this format.
 
 ***{
 "name": "Example",
 "ObjNo": 123,
-"Uitype": 
-"Example",
+"Uitype": "Example",
 "Texture": false,
-"Path": ""
+"Path": "Example/Path"
 }***
 
+The "name" element decides the name that will show up in the UI drop down list to identify the model. ObjNo designates where in the json list the model is located. Note, the ObjNo needs to start from 0 to the nth entry in the json list. The first two elements are our hardcoded geometries so the first model entry will start with ObjNo 2. From there ObjNo should be incremented by ***ONE*** for each additional model. It shoudl also be noted that duplicate ObjNo can cause issues in the program. The Uitype tells the program how the UI elements should be drawn and which options will be avaible. Currently, there are three type "TwoD", "ThreeD", "Model". All models that come from a file (ex. OBJ, DAE, FBX) should have a Uitype of "Model". 
+
+* *Ignore the texture element, this feature has not been implemented yet.*
+
+Finally, the path entry provides the location of the model files for the application to load in. Everything that needs to be done is complete and the model should be possible to load into the application. 
 
 ## Installation
 
