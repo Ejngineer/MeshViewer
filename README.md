@@ -10,7 +10,7 @@ Fig. 1 Mesh view of Stanford bunny
 1. [Design](#Design)
 2. [Instructions](#Instructions)
 3. [Installation](#Installation)
-4. [Known Issues](#Known-Issues)
+4. [Known Issues](#Known-Issues "Goto Known Issues")
 5. [Future features](#Future-features "Goto Future features")
 6. [Challenges and Experience](#Challenges-and-Experience)
 
