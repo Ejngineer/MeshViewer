@@ -10,7 +10,7 @@ Fig. 1 Mesh view of Stanford bunny
 1. [Design](#Design)
 2. [Instructions](#Instructions)
 3. [Installation](#Installation)
-4. [Known issues](#Knownissues)
+4. [Bugs](#Bugs)
 5. [Future features](#Futurefeatures)
 6. [Challenges and Experience](#ChallengesandExperience)
 
@@ -67,7 +67,7 @@ Fig. 3 Typical UI setup in MeshViewer
 
 
 
-## Known issues
+## Bugs
 * some .dae files have an issue where the index count label and actual number of index values are different, casuing an error in ASSIMP. 
  
 ## Future features
