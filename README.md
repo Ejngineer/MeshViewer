@@ -39,13 +39,14 @@ Fig. 2 Point view of 3D skull model
 #### Adding models
 MeshViewer creates a list of all possible models that can be loaded in from a JSON file. The JSON is initially empty with the exception of two hardcoded models. These are for getting familiar with the app's core functions. To add additional models to the json file simply follow this format.
 
-**{
-      "name": "Example",
-      "ObjNo": 123,
-      "Uitype": "Example",
-      "Texture": false,
-      "Path": ""
-}
+***{
+"name": "Example",
+"ObjNo": 123,
+"Uitype": 
+"Example",
+"Texture": false,
+"Path": ""
+}***
 
 
 ## Installation
