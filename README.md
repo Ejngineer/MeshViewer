@@ -11,7 +11,7 @@ Fig. 1 Mesh view of Stanford bunny
 2. [Instructions](#Instructions)
 3. [Installation](#Installation)
 4. [Bugs](#Bugs)
-5. [Future features](#Futurefeatures)
+5. [Future features](#Futurefeatures "Goto Future features")
 6. [Challenges and Experience](#ChallengesandExperience)
 
 ## Design
