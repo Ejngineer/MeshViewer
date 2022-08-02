@@ -51,7 +51,14 @@ The "name" element decides the name that will show up in the UI drop down list t
 
 * *Ignore the texture element, this feature has not been implemented yet.*
 
-Finally, the path entry provides the location of the model files for the application to load in. Everything that needs to be done is complete and the model should be possible to load into the application. 
+Finally, the path entry provides the location of the model files for the application to load in. Everything that needs to be done is complete and the model should be possible to load into the application.
+
+#### Using the app
+Using the ImGui framework, MeshViewer is able to provide an extensive set of options for interacting with models. The UI window is fixed to the right and intially shows only a dropdown list of all the objects that can be rendered. When an object is picked, and depedning on the type of object choses, additional UI elements are drawn. This inlcudes multiple sliders for modifying the object's transform Data, color, ambient color, and specular component. There will also be opetions on how the Object is rendered (Filled, Line, Point) and with which shaders (Default, Phong). 
+
+Fig. 3 Typical UI setup in MeshViewer
+![UI 2](https://user-images.githubusercontent.com/100335668/182348235-6d36b61b-7c64-49c8-8711-b8e3ff2f2f10.jpg)
+
 
 ## Installation
 
