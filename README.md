@@ -12,7 +12,7 @@ Fig. 1 Mesh view of Stanford bunny
 3. [Installation](#Installation)
 4. [Bugs](#Bugs)
 5. [Future features](#Future-features "Goto Future features")
-6. [Challenges and Experience](#ChallengesandExperience)
+6. [Challenges and Experience](#Challenges-and-Experience)
 
 ## Design
 MeshViewer is an Object Oriented app designed to be easy to use and easily scaled for storing and interacting with a large number of models. The structure of the software is kept simple and makes use of only a few design patterns (Factory, Singleton, etc). MeshViewer also makes use of several open source third party software. This includes:
