@@ -13,6 +13,7 @@ Fig. 1 Mesh view of Stanford bunny
 4. [Known issues](#Knownissues)
 5. [Future features](#Futurefeatures)
 6. [Challenges and Experience](#ChallengesandExperience)
+
 ## Design
 MeshViewer is an Object Oriented app designed to be easy to use and easily scaled for storing and interacting with a large number of models. The structure of the software is kept simple and makes use of only a few design patterns (Factory, Singleton, etc). MeshViewer also makes use of several open source third party software. This includes:
 
@@ -67,7 +68,8 @@ Fig. 3 Typical UI setup in MeshViewer
 
 
 ## Known issues
-* .dae files can casue an "Expected different index count in <p> element" error. Not all .dae formatted models cause this issue but it can happen.
+* some .dae files have an issue where the index count label and actual number of index values are different, casuing an error in ASSIMP. 
+ 
 ## Future features
  * Textures
  * Skyboxes
@@ -76,10 +78,8 @@ Fig. 3 Typical UI setup in MeshViewer
  * Normal/Parallax Mapping
  * Console UI window
  * Top window support for messages/errors
- 
- 
-## Challenges and Experience
 
+## Challenges and Experience
 This is my first attempt at developing standalone graphics applications from scratch. This project has taught me alot not just about graphics but also about software design. It is the culmination of months of self study and prototyping in computer graphics. Like any project, there were multiple roadblocks and challenges that arise from being new to a field and using unfamiliar technology. 
  
 Firstly, the design process was exceptionally difficult in comparison to other projects I have done. Deciding exactly what the application should be is a long and complex process that I do not yet have an expertise in. Approahcing the problem slowly and investing the time to design makes the later steps of development easy and manageable. Keeping the application simple and focused while ensuring at least one major factor that seperates our application from others out there makes the endeavor much more valuable. 
