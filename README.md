@@ -64,11 +64,27 @@ Fig. 3 Typical UI setup in MeshViewer
 
 ## Installation
 
+
+
 ## Known issues
-
+* .dae files can casue an "Expected different index count in <p> element" error. Not all .dae formatted models cause this issue but it can happen.
 ## Future features
+ * Textures
+ * Skyboxes
+ * Child mesh interactiblity
+ * Flash/Spot light support
+ * Normal/Parallax Mapping
+ * Console UI window
+ * Top window support for messages/errors
+ 
+ 
+## Challenges and Experience
 
-## Challenges
+This is my first attempt at developing standalone graphics applications from scratch. This project has taught me alot not just about graphics but also about software design. It is the culmination of months of self study and prototyping in computer graphics. Like any project, there were multiple roadblocks and challenges that arise from being new to a field and using unfamiliar technology. 
+ 
+Firstly, the design process was exceptionally difficult in comparison to other projects I have done. Deciding exactly what the application should be is a long and complex process that I do not yet have an expertise in. Approahcing the problem slowly and investing the time to design makes the later steps of development easy and manageable. Keeping the application simple and focused while ensuring at least one major factor that seperates our application from others out there makes the endeavor much more valuable. 
 
+The next biggest issue was learning the various third party softwares necessary to develop our app. For exmaple, ImGui has many features useful for creating elegant and complex UIs. However, due to this rich set of features, it can be difficult to know which ways to construct a UI follows best practices. Of course, reading documentation is key in these circumstances and provides a way to always know that best practices are being followed.   
 
-
+ 
+ 
