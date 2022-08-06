@@ -10,9 +10,10 @@ Fig. 1 Mesh view of Stanford bunny
 1. [Design](#Design)
 2. [Instructions](#Instructions)
 3. [Installation](#Installation)
-4. [Known issues](#Knownissues)
-5. [Future features](#Futurefeatures)
-6. [Challenges](#Challenges)
+4. [Known Issues](#Known-Issues "Goto Known Issues")
+5. [Future features](#Future-features "Goto Future features")
+6. [Challenges and Experience](#Challenges-and-Experience)
+
 ## Design
 MeshViewer is an Object Oriented app designed to be easy to use and easily scaled for storing and interacting with a large number of models. The structure of the software is kept simple and makes use of only a few design patterns (Factory, Singleton, etc). MeshViewer also makes use of several open source third party software. This includes:
 
@@ -54,19 +55,38 @@ The "name" element decides the name that will show up in the UI drop down list t
 Finally, the path entry provides the location of the model files for the application to load in. Everything that needs to be done is complete and the model should be possible to load into the application.
 
 #### Using the app
-Using the ImGui framework, MeshViewer is able to provide an extensive set of options for interacting with models. The UI window is fixed to the right and intially shows only a dropdown list of all the objects that can be rendered. When an object is picked, and depedning on the type of object choses, additional UI elements are drawn. This inlcudes multiple sliders for modifying the object's transform Data, color, ambient color, and specular component. There will also be opetions on how the Object is rendered (Filled, Line, Point) and with which shaders (Default, Phong). 
+Using the ImGui framework, MeshViewer is able to provide an extensive set of options for interacting with models. The UI window is fixed to the right and intially shows only a dropdown list of all the objects that can be rendered. When an object is picked, and depedning on the type of object choses, additional UI elements are drawn. This inlcudes multiple sliders for modifying the object's transform Data, color, ambient color, and specular component. There will also be opetions on how the Object is rendered (Filled, Line, Point) and with which shaders (Default, Phong). MeshViewer also supports lighting effect with similar options to the model options such as changing color and position. Currently, MeshViewer supports having 16 point lights and 16 directioanl lights.
+
 
 Fig. 3 Typical UI setup in MeshViewer
+
 ![UI 2](https://user-images.githubusercontent.com/100335668/182348235-6d36b61b-7c64-49c8-8711-b8e3ff2f2f10.jpg)
 
 
 ## Installation
 
-## Known issues
 
+
+## Known Issues
+* some .dae files have an issue where the index count label and actual number of index values are different, casuing an error in ASSIMP. 
+ 
 ## Future features
+ * Textures
+ * Skyboxes
+ * Child mesh interactiblity
+ * Flash/Spot light support
+ * Normal/Parallax Mapping
+ * Console UI window
+ * Top window support for messages/errors
 
-## Challenges
+## Challenges and Experience
+This is my first attempt at developing standalone graphics applications from scratch. This project has taught me alot not just about graphics but also about software design. It is the culmination of months of self study and prototyping in computer graphics. Like any project, there were multiple roadblocks and challenges that arise from being new to a field and using unfamiliar technology. 
+ 
+Firstly, the design process was exceptionally difficult in comparison to other projects I have done. Deciding exactly what the application should be is a long and complex process that I do not yet have an expertise in. Approahcing the problem slowly and investing the time to design makes the later steps of development easy and manageable. Keeping the application simple and focused while ensuring at least one major factor that seperates our application from others out there makes the endeavor much more valuable. 
 
+The next biggest issue was learning the various third party softwares necessary to develop our app. For exmaple, ImGui has many features useful for creating elegant and complex UIs. However, due to this rich set of features, it can be difficult to know which ways to construct a UI follows best practices. Of course, reading documentation is key in these circumstances and provides a way to always know that best practices are being followed.   
+
+ 
+![screenshot 3](https://user-images.githubusercontent.com/100335668/182384197-7d40dc2d-0a70-4b8b-8903-e04f38952dd2.jpg)
 
 
