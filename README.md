@@ -64,8 +64,7 @@ Fig. 3 Typical UI setup in MeshViewer
 
 
 ## Installation
-
-
+To use the app, simply download a zip file of this repository. The .exe file is located in the MeshViewer directory. Simply run the executable and the app should work. Please note, that this app has only been tested on Windows 8.1 and windows 10.
 
 ## Known Issues
 * some .dae files have an issue where the index count label and actual number of index values are different, casuing an error in ASSIMP. 
