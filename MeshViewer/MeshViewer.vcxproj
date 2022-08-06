@@ -155,7 +155,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="assimp-vc143-mt.dll" />
+    <None Include="imgui.ini" />
     <None Include="json\ObjectList.json" />
+    <None Include="MeshViewer.exe" />
+    <None Include="MeshViewer.pdb" />
     <None Include="shaders\defaultFrag.glsl" />
     <None Include="shaders\defaultVert.glsl" />
     <None Include="shaders\frameFrag.glsl" />

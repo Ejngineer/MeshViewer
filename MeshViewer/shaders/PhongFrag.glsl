@@ -38,22 +38,22 @@ vec3 calcDirLight(Dlight dlight, vec3 normal, vec3 fragpos, vec3 viewdir);
 
 void main()
 {
-		vec3 output = vec3(0.0);
+		vec3 result = vec3(0.0);
 		vec3 Norm = normalize(Normal);
 
 		vec3 viewDir = normalize(viewPos - FragPos);
 
 		for(int i = 0; i < numPlights; i++)
 		{
-			output += calcPointLight(plights[i], Norm, FragPos, viewDir);
+			result += calcPointLight(plights[i], Norm, FragPos, viewDir);
 		}
 
 		for(int i = 0; i < numDlights; i++)
 		{
-			output += calcDirLight(dlights[i], Norm, FragPos, viewDir);
+			result += calcDirLight(dlights[i], Norm, FragPos, viewDir);
 		}
 
-		FragColor = vec4(output, 1.0);
+		FragColor = vec4(result, 1.0);
 }
 
 vec3 calcPointLight(Plight plight, vec3 normal, vec3 fragpos, vec3 viewdir)
