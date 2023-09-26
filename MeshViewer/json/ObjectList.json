@@ -43,13 +43,6 @@
       "Path": "../Models/satellite-modul/model.dae"
     },
     {
-      "name": "Skull",
-      "ObjNo": 6,
-      "Uitype": "Model",
-      "Texture": false,
-      "Path": "../Models/human-skull-and-neck/kallo_DM.obj"
-    },
-    {
       "name": "Gun",
       "ObjNo": 7,
       "Uitype": "Model",
@@ -61,7 +54,7 @@
       "ObjNo": 8,
       "Uitype": "Model",
       "Texture": false,
-      "Path": "../Models/stanford-bunny/bunny.obj"
+      "Path": "../Models/stanford-bunny/bunny.fbx"
     },
     {
       "name": "Mech",

@@ -132,7 +132,7 @@ public:
 	size_t getNumDirLights() { return DLights.size(); }
 	
 private:
-	/*framebuffer texture is applie to this quad*/
+	/*framebuffer texture is applied to this quad*/
 	std::vector<float> frameQuad = 
 	{
 		-1.0f, -1.0f, 0.0f, 0.0f, 0.0f,
@@ -183,7 +183,7 @@ private:
 	glm::vec3 Trans = glm::vec3(0.0f);
 	glm::vec3 Scale = glm::vec3(1.0f);
 	glm::vec3 RotAxis = glm::vec3(0.0f);
-	float AmbientStrength = 1.0f;
+	float AmbientStrength = 0.5f;
 	float SpecularStrength = 2.0f;
 
 	/*Variables to change how object is drawn*/

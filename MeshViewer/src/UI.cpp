@@ -194,7 +194,7 @@ void UI::DrawElement()
 		Rnd.DeletePLight();
 	}
 
-	if (ImGui::Button("Add Directiona Light") && Rnd.getNumDirLights() < 16)
+	if (ImGui::Button("Add Directional Light") && Rnd.getNumDirLights() < 16)
 	{
 		Rnd.CreateLight(Renderer::lightType::DIR_LIGHT);
 	}
