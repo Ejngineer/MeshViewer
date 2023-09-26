@@ -35,6 +35,8 @@ Some of the main features provided by MeshViewer include:
 
 Fig. 2 Point view of 3D skull model
 ![screenshot 4](https://user-images.githubusercontent.com/100335668/182234666-c33aa954-ce7f-4275-8c01-0ed125e54c02.jpg)
+*NOTE: Unfortunately the skull model is not included in this project due to being an OBJ file. I can manually add the file but GitHub Limits file sizes to 25 MB
+(May use git LFS in the future)
 
 ## Instructions
 #### Adding models
@@ -67,7 +69,8 @@ Fig. 3 Typical UI setup in MeshViewer
 To use the app, simply download a zip file of this repository. The .exe file is located in the MeshViewer directory. Simply run the executable and the app should work. Please note, that this app has only been tested on Windows 8.1 and windows 10.
 
 ## Known Issues
-* some .dae files have an issue where the index count label and actual number of index values are different, casuing an error in ASSIMP. 
+* some .dae files have an issue where the index count label and actual number of index values are different, casuing an error in ASSIMP.
+* OBJ files cause issues when included in Visual Studio C++ projects due to obj extensions files getting ignored and causing conflict with C++ obj files
  
 ## Future features
  * Textures
