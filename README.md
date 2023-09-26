@@ -88,7 +88,7 @@ Firstly, the design process was exceptionally difficult in comparison to other p
 
 The next biggest issue was learning the various third party softwares necessary to develop our app. For exmaple, ImGui has many features useful for creating elegant and complex UIs. However, due to this rich set of features, it can be difficult to know which ways to construct a UI follows best practices. Of course, reading documentation is key in these circumstances and provides a way to always know that best practices are being followed.   
 
- 
+ Fig 4. Mesh View of Teapot
 ![screenshot 3](https://user-images.githubusercontent.com/100335668/182384197-7d40dc2d-0a70-4b8b-8903-e04f38952dd2.jpg)
 
 
