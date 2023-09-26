@@ -26,56 +26,49 @@
       "ObjNo": 3,
       "Uitype": "Model",
       "Texture": false,
-      "Path": "Models/utah-teapot-continous-quads/teapot_sketchfab_export.obj"
+      "Path": "../Models/utah-teapot-continous-quads/teapot_sketchfab_export.obj"
     },
     {
       "name": "Helmet",
       "ObjNo": 4,
       "Uitype": "Model",
       "Texture": false,
-      "Path": "Models/visored-barbuta-helmet/source/model/model/model.dae"
+      "Path": "../Models/visored-barbuta-helmet/source/model/model/model.dae"
     },
     {
       "name": "Satellite",
       "ObjNo": 5,
       "Uitype": "Model",
       "Texture": false,
-      "Path": "Models/satellite-modul/model.dae"
+      "Path": "../Models/satellite-modul/model.dae"
     },
     {
       "name": "Skull",
       "ObjNo": 6,
       "Uitype": "Model",
       "Texture": false,
-      "Path": "Models/human-skull-and-neck/kallo_DM.obj"
+      "Path": "../Models/human-skull-and-neck/kallo_DM.obj"
     },
     {
       "name": "Gun",
       "ObjNo": 7,
       "Uitype": "Model",
       "Texture": false,
-      "Path": "Models/bandygun/bandygun3_notUDIm.fbx"
+      "Path": "../Models/bandygun/bandygun3_notUDIm.fbx"
     },
     {
       "name": "Stanford Bunny",
       "ObjNo": 8,
       "Uitype": "Model",
       "Texture": false,
-      "Path": "Models/stanford-bunny/bunny.obj"
-    },
-    {
-      "name": "Nanosuit",
-      "ObjNo": 9,
-      "Uitype": "Model",
-      "Texture": false,
-      "Path": "Models/Nanosuit/nanosuit.obj"
+      "Path": "../Models/stanford-bunny/bunny.obj"
     },
     {
       "name": "Mech",
-      "ObjNo": 10,
+      "ObjNo": 9,
       "Uitype": "Model",
       "Texture": false,
-      "Path": "Models/vr-mech/decimated mech.fbx"
+      "Path": "../Models/vr-mech/decimated mech.fbx"
     }
 
   ]

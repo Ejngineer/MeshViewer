@@ -29,6 +29,7 @@
     <None Include="imgui.ini" />
     <None Include="MeshViewer.exe" />
     <None Include="MeshViewer.pdb" />
+    <None Include="Models\visored-barbuta-helmet\source\model\model\model.dae" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Objects\Triangle.cpp">
