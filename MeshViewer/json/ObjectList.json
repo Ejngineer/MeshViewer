@@ -54,7 +54,7 @@
       "ObjNo": 8,
       "Uitype": "Model",
       "Texture": false,
-      "Path": "../Models/stanford-bunny/bunny.fbx"
+      "Path": "../Models/stanford-bunny/bunny.obj"
     },
     {
       "name": "Mech",
