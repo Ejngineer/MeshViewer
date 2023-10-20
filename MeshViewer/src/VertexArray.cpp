@@ -1,9 +1,9 @@
 #include "VertexArray.h"
 
-VertexArray::VertexArray()
+VertexArray::VertexArray() : ID(0)
 {
 	glGenVertexArrays(1, &ID);
-	Bind();
+	//Bind();
 }
 
 VertexArray::~VertexArray()

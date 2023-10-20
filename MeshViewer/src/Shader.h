@@ -40,6 +40,7 @@ public:
 	void setvec3f(const std::string& name, glm::vec3 input);
 	void setFloat1f(const std::string& name, float v0);
 	void Use() { glUseProgram(ID); };
+	void deleteShader() { glDeleteProgram(ID); }
 
 
 };

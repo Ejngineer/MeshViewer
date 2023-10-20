@@ -13,6 +13,8 @@
 #include "Light.h"
 #include "Objects/PointLight.h"
 #include "Objects/DirectLight.h"
+#include "CubeMap.h"
+
 
 
 /*Singleton for creation and deletion of 
@@ -70,8 +72,17 @@ public:
 	/*Function to setup uniform data passed to shaders*/
 	void setUniforms();
 
+	/*Function to setup uniform data passed to shaders for skybox*/
+	//void setSkyBoxUniforms();
+
 	/*Invoke draw call for our object*/
 	void DrawObject();
+
+	/*Invoke draw call for our skybox*/
+	void DrawCubeMap();
+
+	/*Functions for drawing everytihng in our scene (Object, skybox, etc)*/
+	void DrawScene();
 
 	/*Retrieve tranform data from our Obj data member*/
 	//float* GetObjectTranslation() { return Obj->GetTranslation(); }
@@ -130,6 +141,10 @@ public:
 	size_t getNumPointLights() { return Plights.size(); }
 
 	size_t getNumDirLights() { return DLights.size(); }
+
+	float GetFrameWidth() { return frameWidth; }
+	float GetFrameHeight() { return frameHeight; }
+	glm::mat4 GetViewMatrix() { return view; }
 	
 private:
 	/*framebuffer texture is applied to this quad*/
@@ -157,9 +172,9 @@ private:
 	Shader frameShader;
 
 	/*fixed camera vectors*/
-	static glm::vec3 constexpr eye = glm::vec3(0.0f, 0.0f, 3.0f);
-	static glm::vec3 constexpr up = glm::vec3(0.0f, 1.0f, 0.0f);
-	static glm::vec3 constexpr center = glm::vec3(0.0f);
+	const glm::vec3 eye = glm::vec3(0.0f, 0.0f, 3.0f);
+	const glm::vec3 up = glm::vec3(0.0f, 1.0f, 0.0f);
+	const glm::vec3 center = glm::vec3(0.0f);
 
 	/*MVP matrices*/
 	glm::mat4 model = glm::mat4(1.0f);
@@ -179,6 +194,7 @@ private:
 
 	/*shader uniforms*/
 	Shader shader;
+	Shader SkyBoxShader;
 	glm::vec3 Color = glm::vec3(1.0f);
 	glm::vec3 Trans = glm::vec3(0.0f);
 	glm::vec3 Scale = glm::vec3(1.0f);
@@ -189,6 +205,8 @@ private:
 	/*Variables to change how object is drawn*/
 	int RenderMode = 0;
 	int ShaderMode = 0;
+
+	CubeMap SkyBox;
 
 };
 

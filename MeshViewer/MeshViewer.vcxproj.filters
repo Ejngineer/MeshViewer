@@ -30,6 +30,8 @@
     <None Include="MeshViewer.exe" />
     <None Include="MeshViewer.pdb" />
     <None Include="Models\visored-barbuta-helmet\source\model\model\model.dae" />
+    <None Include="shaders\SkyboxFrag.glsl" />
+    <None Include="shaders\SkyboxVert.glsl" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Objects\Triangle.cpp">
@@ -107,10 +109,13 @@
     <ClCompile Include="src\Objects\Model.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\stb_image.cpp">
+    <ClCompile Include="src\Objects\DirectLight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\Objects\DirectLight.cpp">
+    <ClCompile Include="src\CubeMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\stb_image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -214,10 +219,33 @@
     <ClInclude Include="src\Objects\DirectLight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\CubeMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="vendor\glfw\lib-vc2022\glfw3.lib" />
     <Library Include="vendor\glfw\lib-vc2022\glfw3_mt.lib" />
     <Library Include="vendor\glfw\lib-vc2022\glfw3dll.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="skyboxes\clearsky\back.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="skyboxes\clearsky\bottom.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="skyboxes\clearsky\front.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="skyboxes\clearsky\left.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="skyboxes\clearsky\right.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="skyboxes\clearsky\top.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

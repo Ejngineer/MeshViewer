@@ -1,7 +1,7 @@
 #ifndef __MODEL_H__
 #define __MODEL_H__
 
-#include "../stb_image/stb_image.h"
+#include "stb_image/stb_image.h"
 #include "../Shader.h"
 #include "Mesh.h"
 #include "../Object.h"

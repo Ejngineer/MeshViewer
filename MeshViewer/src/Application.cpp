@@ -29,7 +29,7 @@ void Application::Run()
 
 		GUI.Render();
 
-		Rnd.DrawObject();
+		Rnd.DrawScene();
 
 		Wnd.SwapBuffers();
 	}

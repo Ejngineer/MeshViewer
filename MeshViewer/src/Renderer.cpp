@@ -25,9 +25,15 @@ void Renderer::Init()
 	shader.load(SHADERS::defaultVert, SHADERS::defaultFrag);
 	//shader.load(SHADERS::phongVert, SHADERS::phongFrag);
 	frameShader.load(SHADERS::frameVert, SHADERS::frameFrag);
+	SkyBoxShader.load("shaders/SkyboxVert.glsl", "shaders/SkyboxFrag.glsl");
 
 	frameShader.Use();
 	frameShader.setNum1i("frameTexture", 0);
+
+	SkyBox.LoadCubeMap();
+
+	SkyBoxShader.Use();
+	SkyBoxShader.setNum1i("skybox", 0);
 
 	SetViewPort((int)frameWidth, (int)frameHeight);
 	SetupFBO(frameWidth, frameHeight);
@@ -41,14 +47,16 @@ void Renderer::Clear()
 
 void Renderer::CreateObject(const Shape& shp, const char* path)
 {
+	
 	if (shp == Shape::NONE)
 	{
+		delete(Obj);
 		Obj = nullptr;
 	}
 
 	if (shp == Shape::TRIANGLE)
 	{
-		delete Obj;
+		delete(Obj);
 		Obj = new Triangle();
 		Obj->Create();
 	}
@@ -106,10 +114,10 @@ void Renderer::DeleteDLight()
 	}
 }
 
-void Renderer::CreateShader(const std::string& path)
-{
-	//shader.load("../shaders/defaultvert.glsl", "../shaders/defaultfrag.glsl");
-}
+//void Renderer::CreateShader(const std::string& path)
+//{
+//	shader.load("../shaders/defaultvert.glsl", "../shaders/defaultfrag.glsl");
+//}
 
 void Renderer::setUniforms()
 {
@@ -120,7 +128,7 @@ void Renderer::setUniforms()
 	model = glm::scale(model, Scale);
 	shader.setMat4f("model", model);
 	shader.setMat4f("view", view);
-	projection = glm::perspective(glm::radians(FOV), frameWidth / frameHeight, 1.0f, 100.0f);
+	projection = glm::perspective(glm::radians(FOV), frameWidth / frameHeight, 0.1f, 500.0f);
 	//glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, 0.1f, 100.0f);
 	shader.setMat4f("projection", projection);
 	shader.setvec3f("color", Color);
@@ -145,56 +153,83 @@ void Renderer::setUniforms()
 		shader.setvec3f("dlights[" + std::to_string(i) + "].Dir", DLights[i]->getDirection());
 		shader.setvec3f("dlights[" + std::to_string(i) + "].color", DLights[i]->getColor());
 	}
+
+	
 }
 
 void Renderer::DrawObject()
+{
+	static int prevShaderMode = 0;
+	if (Obj != nullptr)
+	{
+		if (RenderMode == 0)
+		{
+			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+		}
+		if (RenderMode == 1)
+		{
+			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		}
+		if (RenderMode == 2)
+		{
+			glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
+		}
+
+		if (ShaderMode != prevShaderMode)
+		{
+			prevShaderMode = ShaderMode;
+			if (ShaderMode == 0)
+			{
+				shader.deleteShader();
+				shader.load(SHADERS::defaultVert, SHADERS::defaultFrag);
+			}
+			if (ShaderMode == 1)
+			{
+				shader.deleteShader();
+				shader.load(SHADERS::phongVert, SHADERS::phongFrag);
+			}
+			if (ShaderMode == 2)
+			{
+				shader.deleteShader();
+				shader.load(SHADERS::textureVert, SHADERS::textureFrag);
+			}
+		}
+
+		setUniforms();
+		
+		Obj->Draw();
+	}	
+}
+
+void Renderer::DrawCubeMap()
+{
+	glDepthFunc(GL_LEQUAL);
+	SkyBoxShader.Use();
+	glm::mat4 skyBoxView = glm::mat4(glm::mat3(view));
+	SkyBoxShader.setMat4f("view", skyBoxView);
+	projection = glm::perspective(glm::radians(FOV), frameWidth / frameHeight, 0.1f, 1000.0f);
+	SkyBoxShader.setMat4f("projection", projection);
+	SkyBox.Draw();
+	glDepthFunc(GL_LESS);
+}
+
+void Renderer::DrawScene()
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, FBO);
 	{
 		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		if (Obj != nullptr)
-		{
-			if (RenderMode == 0)
-			{
-				glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-			}
-			if (RenderMode == 1)
-			{
-				glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-			}
-			if (RenderMode == 2)
-			{
-				glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
-			}
-
-			if (ShaderMode == 0)
-			{
-				shader.load(SHADERS::defaultVert, SHADERS::defaultFrag);
-				
-			}
-			if (ShaderMode == 1)
-			{
-				shader.load(SHADERS::phongVert, SHADERS::phongFrag);
-			}
-			if (ShaderMode == 2)
-			{
-				shader.load(SHADERS::textureVert, SHADERS::textureFrag);
-			}
-
-			setUniforms();
-			
-			Obj->Draw();
-		}
+		DrawObject();
+		DrawCubeMap();
 	}
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
-	
+
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 	frameShader.Use();
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, frameTexture);
-	
+
 	quadVAO.Bind();
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 	quadVAO.UnBind();

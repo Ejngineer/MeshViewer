@@ -2,13 +2,13 @@
 
 #include <iostream>
 
-VertexBuffer::VertexBuffer()
+VertexBuffer::VertexBuffer() : ID(0)
 {
 	glGenBuffers(1, & ID);
-	glBindBuffer(GL_ARRAY_BUFFER, ID);
+	//glBindBuffer(GL_ARRAY_BUFFER, ID);
 }
 
-VertexBuffer::VertexBuffer(size_t size, void* data)
+VertexBuffer::VertexBuffer(size_t size, void* data) : ID(0)
 {
 	glGenBuffers(1, &ID);
 	glBindBuffer(GL_ARRAY_BUFFER, ID);

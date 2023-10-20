@@ -1,12 +1,18 @@
 #include "Cube.h"
 
-Cube::Cube()
+Cube::Cube() : size(0.5f)
 {
 	VBO.SetBufferDataS(GetSize(), GetData());
 }
 
 Cube::~Cube()
 {
+}
+
+Cube::Cube(float size)
+{
+	this->size = size;
+	VBO.SetBufferDataS(GetSize(), GetData());
 }
 
 void Cube::Draw()
