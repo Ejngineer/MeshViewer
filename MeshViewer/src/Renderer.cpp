@@ -198,7 +198,9 @@ void Renderer::DrawObject()
 		setUniforms();
 		
 		Obj->Draw();
-	}	
+	
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	}
 }
 
 void Renderer::DrawCubeMap()
@@ -220,7 +222,8 @@ void Renderer::DrawScene()
 		glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		DrawObject();
-		DrawCubeMap();
+		if(isSkyBox)
+			DrawCubeMap();
 	}
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 

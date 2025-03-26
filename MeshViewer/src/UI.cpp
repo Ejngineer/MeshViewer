@@ -54,6 +54,11 @@ void UI::Render()
 
 	ImGui::Begin("Mesh Viewer", &opened, flags);
 	ImGui::Combo("Objects", &currSelected, ObjNames.data(), (int)ObjNames.size());
+	bool SkyBoxToggle = Rnd.GetSkyBoxToggle();
+	if (ImGui::Checkbox("Draw Sky Box", &SkyBoxToggle))
+	{
+		Rnd.ToggleSkyBox();
+	}
 	
 	if (prevSelected != currSelected)
 	{	

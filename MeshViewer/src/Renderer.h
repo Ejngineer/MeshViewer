@@ -17,7 +17,7 @@
 
 
 
-/*Singleton for creation and deletion of 
+/*Singleton for creation and deletion of
 geomety/models and shaders. Also responsible for
 invoking draw calls*/
 class Renderer
@@ -109,13 +109,13 @@ public:
 	float* getColor() { return glm::value_ptr(Color); }
 
 	/*Change object coordinates*/
-	float* getTransform()  { return glm::value_ptr(Trans); }
+	float* getTransform() { return glm::value_ptr(Trans); }
 
 	/*Change object scale*/
 	float* getScale() { return glm::value_ptr(Scale); }
 
 	float* GetRotation() { return glm::value_ptr(RotAxis); }
-	
+
 	/*Change object rotation*/
 	void Rotate();
 
@@ -145,10 +145,13 @@ public:
 	float GetFrameWidth() { return frameWidth; }
 	float GetFrameHeight() { return frameHeight; }
 	glm::mat4 GetViewMatrix() { return view; }
-	
+
+	void ToggleSkyBox() { isSkyBox = !isSkyBox; }
+	bool GetSkyBoxToggle() { return isSkyBox; }
+
 private:
 	/*framebuffer texture is applied to this quad*/
-	std::vector<float> frameQuad = 
+	std::vector<float> frameQuad =
 	{
 		-1.0f, -1.0f, 0.0f, 0.0f, 0.0f,
 		 1.0f, -1.0f, 0.0f, 1.0f, 0.0f,
@@ -188,7 +191,7 @@ private:
 	/*Initial frameBuffer resolution*/
 	float frameWidth = 1200.0f;
 	float frameHeight = 900.0f;
-	
+
 	/*geometry/model data members*/
 	Object* Obj;
 
@@ -206,6 +209,7 @@ private:
 	int RenderMode = 0;
 	int ShaderMode = 0;
 
+	bool isSkyBox = true;
 	CubeMap SkyBox;
 
 };
