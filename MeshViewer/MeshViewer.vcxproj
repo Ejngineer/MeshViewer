@@ -91,7 +91,6 @@
     <None Include="assimp-vc143-mt.dll" />
     <None Include="imgui.ini" />
     <None Include="json\ObjectList.json" />
-    <None Include="MeshViewer.exe" />
     <None Include="MeshViewer.pdb" />
     <None Include="Models\visored-barbuta-helmet\source\model\model\model.dae" />
     <None Include="shaders\defaultFrag.glsl" />

@@ -27,7 +27,6 @@
     <None Include="shaders\TextureFrag.glsl" />
     <None Include="assimp-vc143-mt.dll" />
     <None Include="imgui.ini" />
-    <None Include="MeshViewer.exe" />
     <None Include="MeshViewer.pdb" />
     <None Include="Models\visored-barbuta-helmet\source\model\model\model.dae" />
     <None Include="shaders\SkyboxFrag.glsl" />
